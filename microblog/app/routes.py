@@ -23,6 +23,10 @@ def index():
         {
             'author': {'username': 'Susan'},
             'body': 'The Avengers movie was so cool!'
+        },
+        {
+            'author': {'username': 'Cindy'},
+            'body': 'You suck'
         }
     ]
     template = render_template('index.html', title=title, user=user, posts=posts)

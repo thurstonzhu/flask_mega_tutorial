@@ -1,0 +1,10 @@
+# Misc
+*.txt
+patch
+
+# Microblog
+microblog/venv/
+microblog/app/__pycache__/
+
+# Top-Level
+__pycache__
