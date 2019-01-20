@@ -1,5 +1,6 @@
-# Import the app class from the app package
+# Import the app_inst class from the app package
 from app import app_inst
+from flask import render_template
 
 # View functions = Python functions that serve as handlers for application routes
 # View functions are decorated with @app.route
@@ -12,4 +13,17 @@ from app import app_inst
 @app_inst.route('/')
 @app_inst.route('/index')
 def index():
-    return "Hello, World!"
+    user = { 'username': 'Thurston' }
+    title = 'Home'
+    posts = [
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
+        }
+    ]
+    template = render_template('index.html', title=title, user=user, posts=posts)
+    return template
