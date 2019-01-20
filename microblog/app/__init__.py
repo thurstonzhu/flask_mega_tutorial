@@ -4,8 +4,8 @@ from flask import Flask
 from config import Config
 
 # Create the app object as instance of class Flask imported from package flask
-app_inst = Flask(__name__)
-app_inst.config.from_object(Config)
+app = Flask(__name__)
+app.config.from_object(Config)
 
 # Workaround to circular imports
 # app (module)

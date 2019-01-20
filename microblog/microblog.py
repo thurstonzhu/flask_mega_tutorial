@@ -1,3 +1,3 @@
-from app import app_inst
+from app import app
 
 

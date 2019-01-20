@@ -1,6 +1,7 @@
 # Import the app_inst class from the app package
-from app import app_inst
-from flask import render_template
+from app import app
+from flask import render_template, flash, redirect
+from app.forms import LoginForm
 
 # View functions = Python functions that serve as handlers for application routes
 # View functions are decorated with @app.route
@@ -10,8 +11,8 @@ from flask import render_template
 # @app.route creates association between URL and function
 
 
-@app_inst.route('/')
-@app_inst.route('/index')
+@app.route('/')
+@app.route('/index')
 def index():
     user = { 'username': 'Thurston' }
     title = 'Home'
@@ -31,3 +32,16 @@ def index():
     ]
     template = render_template('index.html', title=title, user=user, posts=posts)
     return template
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    title = 'Sign In'
+    if form.validate_on_submit():
+        flash('Login requested for user {}, remember_me={}'.format(
+            form.username.data, form.remember_me.data))
+        return redirect('/index')
+    template = render_template('login.html', title=title, form=form)
+    return template
+
+
