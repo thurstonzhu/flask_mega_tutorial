@@ -3,7 +3,6 @@
 patch
 
 # Microblog
-microblog/venv/
 microblog/app/__pycache__/
 
 # Top-Level

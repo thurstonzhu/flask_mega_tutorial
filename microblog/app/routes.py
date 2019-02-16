@@ -1,6 +1,6 @@
 # Import the app_inst class from the app package
 from app import app
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, url_for
 from app.forms import LoginForm
 
 # View functions = Python functions that serve as handlers for application routes
@@ -40,7 +40,7 @@ def login():
     if form.validate_on_submit():
         flash('Login requested for user {}, remember_me={}'.format(
             form.username.data, form.remember_me.data))
-        return redirect('/index')
+        return redirect(url_for('index'))
     template = render_template('login.html', title=title, form=form)
     return template
 
